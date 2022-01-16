@@ -1,0 +1,49 @@
+{
+  "name": "credit-union-bootstrap",
+  "version": "0.0.1",
+  "description": "credit-union bootstrap api",
+  "main": "server.js",
+  "scripts": {
+    "test": "jest --watchAll --verbose --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oyedotunsodiq045/credit-union-bootstrap.git"
+  },
+  "author": "Sodiq Oyedotun",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/oyedotunsodiq045/credit-union-bootstrap/issues"
+  },
+  "homepage": "https://github.com/oyedotunsodiq045/credit-union-bootstrap#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "colors": "^1.4.0",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^12.0.3",
+    "express": "^4.17.2",
+    "express-fileupload": "^1.2.1",
+    "express-mongo-sanitize": "^2.2.0",
+    "express-rate-limit": "^6.1.0",
+    "helmet": "^5.0.1",
+    "hpp": "^0.2.3",
+    "json2csv": "^5.0.6",
+    "jsonwebtoken": "^8.5.1",
+    "moment": "^2.29.1",
+    "mongoose": "^6.1.6",
+    "morgan": "^1.10.0",
+    "node-geocoder": "^3.28.0",
+    "nodemailer": "^6.7.2",
+    "redis": "^4.0.2",
+    "slugify": "^1.6.5"
+  },
+  "devDependencies": {
+    "jest": "^27.4.7",
+    "nodemon": "^2.0.15",
+    "supertest": "^6.2.1"
+  },
+  "optionalDependencies": {
+    "win-node-env": "^0.6.0"
+  }
+}
