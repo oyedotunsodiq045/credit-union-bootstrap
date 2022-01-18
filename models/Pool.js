@@ -3,8 +3,6 @@ const Schema = mongoose.Schema
 
 const PoolSchema = new Schema(
   {
-    poolMember: String,
-    poolMemberPairee: String,
     amount: {
       type: Number,
       required: [true, 'Please add an amount'],
@@ -17,6 +15,12 @@ const PoolSchema = new Schema(
   },
   {
     timestamps: true,
+    toJSON: {
+      virtuals: true,
+    },
+    toObject: {
+      virtuals: true,
+    },
   }
 )
 

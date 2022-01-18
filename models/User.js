@@ -1,11 +1,21 @@
+// https://www.npmjs.com/package/mongoose-auto-increment
 const crypto = require('crypto')
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
+const autoIncrement = require('mongoose-auto-increment')
+
+const connection = mongoose.createConnection('mongodb://localhost/creditunion')
+autoIncrement.initialize(connection)
 
 const UserSchema = new Schema(
   {
+    sequence: {
+      type: Number,
+      required: [true, 'Please add a user sequence'],
+      unique: true,
+    },
     firstname: {
       type: String,
       trim: true,
@@ -56,12 +66,26 @@ const UserSchema = new Schema(
       type: Boolean,
       default: true,
     },
-    poolMonthNumber: Number,
-    poolPaireeMonthNumber: Number,
+    poolMonthNumber: {
+      type: Number,
+      required: [true, 'Please add a pool month number'],
+    },
+    poolMonth: {
+      type: String,
+      required: [true, 'Please add a pool month'],
+    },
+    poolPaireeMonthNumber: {
+      type: Number,
+      required: [true, 'Please add a pool pairee month number'],
+    },
+    poolPaireeMonth: {
+      type: String,
+      required: [true, 'Please add a pool pairee month'],
+    },
     community: {
       type: mongoose.Schema.ObjectId,
       ref: 'Community',
-      required: true,
+      // required: true,
     },
     resetPasswordToken: String,
     resetPasswordExpire: String,
@@ -76,6 +100,13 @@ const UserSchema = new Schema(
     },
   }
 )
+
+UserSchema.plugin(autoIncrement.plugin, {
+  model: 'User',
+  field: 'sequence',
+  startAt: 1,
+  incrementBy: 1,
+})
 
 // Encrypt password using bcrypt
 UserSchema.pre('save', async function (next) {
@@ -131,7 +162,7 @@ UserSchema.virtual('communities', {
 })
 
 // Reverse populate with virtuals
-UserSchema.virtual('pool', {
+UserSchema.virtual('pools', {
   ref: 'Pool',
   localField: '_id',
   foreignField: 'userRef',
@@ -139,7 +170,7 @@ UserSchema.virtual('pool', {
 })
 
 // Reverse populate with virtuals
-UserSchema.virtual('receipt', {
+UserSchema.virtual('receipts', {
   ref: 'Receipt',
   localField: '_id',
   foreignField: 'userRef',

@@ -5,19 +5,23 @@ const geocoder = require('../utils/geocoder')
 
 const CommunitySchema = new Schema(
   {
-    name: {
+    communityNumber: {
+      type: Number,
+      required: [true, 'Please add a community number'],
+      unique: true,
+    },
+    name: { // firstname: + " " + lastname of the first user in the community
       type: String,
       required: [true, 'Please add a name'],
       unique: true,
       trim: true,
       maxlength: [50, 'Name can not be more than 50 characters'],
     },
-    number: Number,
     slug: String,
     description: {
       type: String,
-      required: [true, 'Please add a description'],
-      maxlength: [500, 'Name can not be more than 500 characters'],
+      // required: [true, 'Please add a description'],
+      maxlength: [500, 'Description can not be more than 500 characters'],
     },
     address: {
       type: String,
@@ -44,11 +48,17 @@ const CommunitySchema = new Schema(
     userRef: {
       type: mongoose.Schema.ObjectId,
       ref: 'User',
-      required: true
+      required: true,
     },
   },
   {
     timestamps: true,
+    toJSON: {
+      virtuals: true,
+    },
+    toObject: {
+      virtuals: true,
+    },
   }
 )
 

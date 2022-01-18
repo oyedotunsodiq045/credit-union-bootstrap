@@ -1,5 +1,9 @@
 const mongoose = require('mongoose')
+const autoIncrement = require('mongoose-auto-increment')
 const Schema = mongoose.Schema
+
+var connection = mongoose.createConnection('mongodb://localhost/shopify')
+autoIncrement.initialize(connection)
 
 const ReceiptSchema = new Schema(
   {
@@ -28,5 +32,12 @@ const ReceiptSchema = new Schema(
     timestamps: true,
   }
 )
+
+ReceiptSchema.plugin(autoIncrement.plugin, {
+  model: 'Receipt',
+  field: 'receiptNumber',
+  startAt: 1,
+  incrementBy: 1,
+})
 
 module.exports = mongoose.model('Receipt', ReceiptSchema)
