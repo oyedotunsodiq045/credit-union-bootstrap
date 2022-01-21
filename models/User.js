@@ -68,21 +68,25 @@ const UserSchema = new Schema(
     },
     poolMonthNumber: {
       type: Number,
-      required: [true, 'Please add a pool month number'],
+      // required: [true, 'Please add a pool month number'],
     },
     poolMonth: {
       type: String,
-      required: [true, 'Please add a pool month'],
+      // required: [true, 'Please add a pool month'],
     },
     poolPaireeMonthNumber: {
       type: Number,
-      required: [true, 'Please add a pool pairee month number'],
+      // required: [true, 'Please add a pool pairee month number'],
     },
     poolPaireeMonth: {
       type: String,
-      required: [true, 'Please add a pool pairee month'],
+      // required: [true, 'Please add a pool pairee month'],
     },
-    community: {
+    userCommunityNumber: {
+      type: Number,
+      // required: [true, 'Please add a pool pairee month number'],
+    },
+    communityId: {
       type: mongoose.Schema.ObjectId,
       ref: 'Community',
       // required: true,

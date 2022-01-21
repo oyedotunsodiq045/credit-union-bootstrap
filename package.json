@@ -4,6 +4,8 @@
   "description": "credit-union bootstrap api",
   "main": "server.js",
   "scripts": {
+    "start": "NODE_ENV=production node server",
+    "dev": "nodemon server",
     "test": "jest --watchAll --verbose --coverage"
   },
   "repository": {
