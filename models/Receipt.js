@@ -25,7 +25,17 @@ const ReceiptSchema = new Schema(
     userRef: {
       type: mongoose.Schema.ObjectId,
       ref: 'User',
-      required: true
+      required: true,
+    },
+    poolRef: {
+      type: mongoose.Schema.ObjectId,
+      ref: 'Pool',
+      required: true,
+    },
+    paymentRef: {
+      type: mongoose.Schema.ObjectId,
+      ref: 'Payment',
+      required: true,
     },
   },
   {

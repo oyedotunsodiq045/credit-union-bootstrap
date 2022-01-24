@@ -12,6 +12,11 @@ const PoolSchema = new Schema(
       ref: 'User',
       required: true,
     },
+    receiptRef: {
+      type: mongoose.Schema.ObjectId,
+      ref: 'Receipt',
+      required: true,
+    },
   },
   {
     timestamps: true,

@@ -20,7 +20,7 @@ const users = require('./routes/users')
 const pools = require('./routes/pools')
 const receipts = require('./routes/receipts')
 const payments = require('./routes/payments')
-// const communities = require('./routes/communities')
+const communities = require('./routes/communities')
 
 // Load env vars
 dotenv.config({
@@ -52,10 +52,10 @@ app.use(express.static(path.join(__dirname, 'public')))
 // Mount routers
 app.use('/api/v1/auth', auth)
 // app.use('/api/v1/users', users)
-// app.use('/api/v1/pools', pools)
-// app.use('/api/v1/receipts', receipts)
-// app.use('/api/v1/payments', payments)
-// app.use('/api/v1/communities', communities)
+app.use('/api/v1/pools', pools)
+app.use('/api/v1/receipts', receipts)
+app.use('/api/v1/payments', payments)
+app.use('/api/v1/communities', communities)
 
 app.use(errorHandler)
 
