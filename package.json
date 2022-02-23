@@ -40,5 +40,13 @@
     "nodemailer": "^6.7.2",
     "redis": "^4.0.2",
     "slugify": "^1.6.5"
+  },
+  "devDependencies": {
+    "jest": "^27.4.7",
+    "nodemon": "^2.0.15",
+    "supertest": "^6.2.1"
+  },
+  "optionalDependencies": {
+    "win-node-env": "^0.6.0"
   }
 }
